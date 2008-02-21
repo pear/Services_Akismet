@@ -40,17 +40,18 @@
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$release_version = '0.3.0';
+$release_version = '0.4.0';
 $release_state   = 'alpha';
 $release_notes   =
-    'Third release. Made HTTP client layer pluggable and provided ' .
-    'implementations using PHP sockets, PHP steams and cURL.';
+    "First PEAR release. Made included $_SERVER variables in Comment a " .
+    "whitelist instead of a blacklist to address privacy and security " .
+    "concerns.";
 
 $description =
     "This package provides an object-oriented interface to the Akismet REST " .
     "API. Akismet is used to detect and to filter spam comments posted on " .
     "weblogs. Though the use of Akismet is not specific to Wordpress, you " .
-    "will need a Wordpress API key from @link http://wordpress.com to use " .
+    "will need a Wordpress API key from {@link http://wordpress.com} to use " .
     "this package.\n\n" .
     "Akismet is free for personal use and a license may be purchased for " .
     "commercial or high-volume applications.\n\n" .
@@ -60,7 +61,7 @@ $description =
 $package = new PEAR_PackageFileManager2();
 
 $package->setOptions(array(
-    'filelistgenerator'      => 'svn',
+    'filelistgenerator'      => 'cvs',
     'simpleoutput'           => true,
     'baseinstalldir'         => '/Services',
     'packagedirectory'       => './',
@@ -85,7 +86,7 @@ $package->setLicense('MIT',
 $package->setNotes($release_notes);
 $package->setReleaseVersion($release_version);
 $package->setReleaseStability($release_state);
-$package->setAPIVersion('0.3.0');
+$package->setAPIVersion('0.4.0');
 $package->setAPIStability('alpha');
 
 $package->addIgnore('package.php');
