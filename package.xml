@@ -6,7 +6,7 @@
  <name>Services_Akismet</name>
  <channel>pear.php.net</channel>
  <summary>PHP client for the Akismet REST API</summary>
- <description>This package provides an object-oriented interface to the Akismet REST API. Akismet is used to detect and to filter spam comments posted on weblogs. Though the use of Akismet is not specific to Wordpress, you will need a Wordpress API key from @link http://wordpress.com to use this package.
+ <description>This package provides an object-oriented interface to the Akismet REST API. Akismet is used to detect and to filter spam comments posted on weblogs. Though the use of Akismet is not specific to Wordpress, you will need a Wordpress API key from {@link http://wordpress.com} to use this package.
 
 Akismet is free for personal use and a license may be purchased for commercial or high-volume applications.
 
@@ -17,18 +17,18 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
   <email>mike@silverorange.com</email>
   <active>yes</active>
  </lead>
- <date>2008-02-13</date>
- <time>00:39:31</time>
+ <date>2008-02-21</date>
+ <time>16:08:47</time>
  <version>
-  <release>0.3.0</release>
-  <api>0.3.0</api>
+  <release>0.4.0</release>
+  <api>0.4.0</api>
  </version>
  <stability>
   <release>alpha</release>
   <api>alpha</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/mit-license.html">MIT</license>
- <notes>Third release. Made HTTP client layer pluggable and provided implementations using PHP sockets, PHP steams and cURL.</notes>
+ <notes>First PEAR release. Made included Array variables in Comment a whitelist instead of a blacklist to address privacy and security concerns.</notes>
  <contents>
   <dir baseinstalldir="/Services" name="/">
    <dir name="Akismet">
@@ -44,7 +44,7 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
     <file name="InvalidCommentException.php" role="php" />
    </dir> <!-- /Akismet -->
    <dir name="tests">
-    <file name="test.php" role="php" />
+    <file name="test.php" role="test" />
    </dir> <!-- /tests -->
    <file name="Akismet.php" role="php">
     <tasks:replace from="@API-VERSION@" to="api-version" type="package-info" />
@@ -61,21 +61,26 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
     <min>1.4.0</min>
    </pearinstaller>
   </required>
+  <optional>
+   <extension>
+    <name>curl</name>
+   </extension>
+  </optional>
  </dependencies>
  <phprelease />
  <changelog>
   <release>
    <version>
-    <release>0.3.0</release>
-    <api>0.3.0</api>
+    <release>0.4.0</release>
+    <api>0.4.0</api>
    </version>
    <stability>
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2008-02-13</date>
+   <date>2008-02-21</date>
    <license uri="http://www.opensource.org/licenses/mit-license.html">MIT</license>
-   <notes>Third release. Made HTTP client layer pluggable and provided implementations using PHP sockets, PHP steams and cURL.</notes>
+   <notes>First PEAR release. Made included Array variables in Comment a whitelist instead of a blacklist to address privacy and security concerns.</notes>
   </release>
  </changelog>
 </package>
