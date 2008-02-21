@@ -43,7 +43,7 @@ PEAR::setErrorHandling(PEAR_ERROR_DIE);
 $release_version = '0.4.0';
 $release_state   = 'alpha';
 $release_notes   =
-    "First PEAR release. Made included $_SERVER variables in Comment a " .
+    "First PEAR release. Made included \$_SERVER variables in Comment a " .
     "whitelist instead of a blacklist to address privacy and security " .
     "concerns.";
 
@@ -51,8 +51,8 @@ $description =
     "This package provides an object-oriented interface to the Akismet REST " .
     "API. Akismet is used to detect and to filter spam comments posted on " .
     "weblogs. Though the use of Akismet is not specific to Wordpress, you " .
-    "will need a Wordpress API key from {@link http://wordpress.com} to use " .
-    "this package.\n\n" .
+    "will need a Wordpress API key from http://wordpress.com/api-keys/ to " .
+    "use this package.\n\n" .
     "Akismet is free for personal use and a license may be purchased for " .
     "commercial or high-volume applications.\n\n" .
     "This package is derived from the miPHP Akismet class written by Bret " .

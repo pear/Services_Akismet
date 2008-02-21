@@ -6,7 +6,7 @@
  <name>Services_Akismet</name>
  <channel>pear.php.net</channel>
  <summary>PHP client for the Akismet REST API</summary>
- <description>This package provides an object-oriented interface to the Akismet REST API. Akismet is used to detect and to filter spam comments posted on weblogs. Though the use of Akismet is not specific to Wordpress, you will need a Wordpress API key from {@link http://wordpress.com} to use this package.
+ <description>This package provides an object-oriented interface to the Akismet REST API. Akismet is used to detect and to filter spam comments posted on weblogs. Though the use of Akismet is not specific to Wordpress, you will need a Wordpress API key from http://wordpress.com/api-keys/ to use this package.
 
 Akismet is free for personal use and a license may be purchased for commercial or high-volume applications.
 
@@ -18,7 +18,7 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
   <active>yes</active>
  </lead>
  <date>2008-02-21</date>
- <time>16:08:47</time>
+ <time>16:12:04</time>
  <version>
   <release>0.4.0</release>
   <api>0.4.0</api>
@@ -28,7 +28,7 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
   <api>alpha</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/mit-license.html">MIT</license>
- <notes>First PEAR release. Made included Array variables in Comment a whitelist instead of a blacklist to address privacy and security concerns.</notes>
+ <notes>First PEAR release. Made included $_SERVER variables in Comment a whitelist instead of a blacklist to address privacy and security concerns.</notes>
  <contents>
   <dir baseinstalldir="/Services" name="/">
    <dir name="Akismet">
@@ -80,7 +80,7 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
    </stability>
    <date>2008-02-21</date>
    <license uri="http://www.opensource.org/licenses/mit-license.html">MIT</license>
-   <notes>First PEAR release. Made included Array variables in Comment a whitelist instead of a blacklist to address privacy and security concerns.</notes>
+   <notes>First PEAR release. Made included $_SERVER variables in Comment a whitelist instead of a blacklist to address privacy and security concerns.</notes>
   </release>
  </changelog>
 </package>
