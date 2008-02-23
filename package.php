@@ -40,7 +40,7 @@
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$release_version = '0.4.0';
+$release_version = '0.4.1';
 $release_state   = 'alpha';
 $release_notes   =
     "First PEAR release. Made included \$_SERVER variables in Comment a " .
