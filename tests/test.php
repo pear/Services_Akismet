@@ -2,6 +2,11 @@
 
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
+if (!array_key_exists($_SERVER['argv'][1])) {
+    echo "specify your Akismet API key as the first argument.\n";
+    exit(1);
+}
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
@@ -33,7 +38,7 @@ $comment->setHttpReferer('http://example.com');
 echo $comment;
 
 $bad_key = 'asdf';
-$key = 'd81717348c6a';
+$key = $_SERVER['argv'][1];
 $uri = 'http://example.com';
 $implementations = array(
     'sockets',
