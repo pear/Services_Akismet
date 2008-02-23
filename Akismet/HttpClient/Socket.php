@@ -54,7 +54,7 @@ require_once 'Services/Akismet/HttpClient.php';
  * Socket-based simple HTTP client for accessing the Akismet REST API
  *
  * This socket-based HTTP client requires PHP to support the fsockopen(),
- * fwrite(), fgets(), fflush() and fclose() functions.
+ * fwrite(), fread(), fflush() and fclose() functions.
  *
  * This HTTP client only supports the HTTP POST method since that is all that
  * is needed for the Akismet API.
@@ -170,17 +170,19 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
         }
 
         $request = sprintf("POST %s HTTP/1.1\r\n" .
+            "User-Agent: %s\r\n" .
             "Host: %s\r\n" .
+            "Accept: */*\r\n" .
+            "Content-Length: %s\r\n" .
             "Content-Type: application/x-www-form-urlencoded; " .
             "charset=utf-8\r\n" .
-            "Content-Length: %s\r\n" .
-            "User-Agent: %s\r\n" .
+            "Connection: close\r\n" .
             "\r\n" .
             "%s",
             $path,
+            $this->_user_agent,
             $host,
             $content_length,
-            $this->_user_agent,
             $content);
 
         if (fwrite($this->_connection, $request) === false) {
@@ -195,7 +197,7 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
 
         $response = '';
         while (!feof($this->_connection)) {
-            $chunk = fgets($this->_connection, $this->_chunk_size);
+            $chunk = fread($this->_connection, $this->_chunk_size);
             if ($chunk === false) {
                 throw new Services_Akismet_CommunicationException('Error ' .
                     'reading response from API server.');
@@ -297,7 +299,7 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
         if ($this->_connected) {
             // read remaining data and junk it
             while (!feof($this->_connection)) {
-                fgets($this->_connection, $this->_chunk_size);
+                fread($this->_connection, $this->_chunk_size);
             }
             fclose($this->_connection);
             $this->_connected = false;
