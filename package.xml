@@ -17,18 +17,18 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
   <email>mike@silverorange.com</email>
   <active>yes</active>
  </lead>
- <date>2008-02-23</date>
- <time>02:40:07</time>
+ <date>2008-02-29</date>
+ <time>19:21:23</time>
  <version>
-  <release>0.4.1</release>
-  <api>0.4.0</api>
+  <release>0.5.0</release>
+  <api>0.5.0</api>
  </version>
  <stability>
-  <release>alpha</release>
-  <api>alpha</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/mit-license.html">MIT</license>
- <notes>First PEAR release. Made included $_SERVER variables in Comment a whitelist instead of a blacklist to address privacy and security concerns.</notes>
+ <notes>Cleaned up example code in documentation. Marked as package as beta. no code changes since 0.4.1.</notes>
  <contents>
   <dir baseinstalldir="/Services" name="/">
    <dir name="Akismet">
@@ -71,16 +71,16 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
  <changelog>
   <release>
    <version>
-    <release>0.4.1</release>
-    <api>0.4.0</api>
+    <release>0.5.0</release>
+    <api>0.5.0</api>
    </version>
    <stability>
-    <release>alpha</release>
-    <api>alpha</api>
+    <release>beta</release>
+    <api>beta</api>
    </stability>
-   <date>2008-02-23</date>
+   <date>2008-02-29</date>
    <license uri="http://www.opensource.org/licenses/mit-license.html">MIT</license>
-   <notes>First PEAR release. Made included $_SERVER variables in Comment a whitelist instead of a blacklist to address privacy and security concerns.</notes>
+   <notes>Cleaned up example code in documentation. Marked as package as beta. no code changes since 0.4.1.</notes>
   </release>
  </changelog>
 </package>

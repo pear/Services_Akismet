@@ -40,12 +40,11 @@
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$release_version = '0.4.1';
-$release_state   = 'alpha';
+$release_version = '0.5.0';
+$release_state   = 'beta';
 $release_notes   =
-    "First PEAR release. Made included \$_SERVER variables in Comment a " .
-    "whitelist instead of a blacklist to address privacy and security " .
-    "concerns.";
+    "Cleaned up example code in documentation. Marked as package as beta. " .
+    "no code changes since 0.4.1.";
 
 $description =
     "This package provides an object-oriented interface to the Akismet REST " .
@@ -86,8 +85,8 @@ $package->setLicense('MIT',
 $package->setNotes($release_notes);
 $package->setReleaseVersion($release_version);
 $package->setReleaseStability($release_state);
-$package->setAPIVersion('0.4.0');
-$package->setAPIStability('alpha');
+$package->setAPIVersion('0.5.0');
+$package->setAPIStability('beta');
 
 $package->addIgnore('package.php');
 $package->addIgnore('package-2.0.xml');
