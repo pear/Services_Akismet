@@ -9,11 +9,9 @@
  * particular implementation. For example:
  *
  * <code>
- * <?php
  * // creates a streams-based http client for use with the Akismet package
  * $client = Services_Akismet_HttpClient::factory('rest.akismet.com', 80,
  *     'Services_Akismet', 'streams');
- * ?>
  * </code>
  *
  * The available implementations are:
@@ -85,6 +83,14 @@ require_once 'PEAR/Exception.php';
  *
  * This HTTP client only supports the HTTP POST method since that is all that
  * is needed for the Akismet API.
+ *
+ * Example usage:
+ *
+ * <code>
+ * // creates a streams-based http client for use with the Akismet package
+ * $client = Services_Akismet_HttpClient::factory('rest.akismet.com', 80,
+ *     'Services_Akismet', 'streams');
+ * </code>
  *
  * @category  Services
  * @package   Services_Akismet

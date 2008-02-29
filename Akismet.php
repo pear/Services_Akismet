@@ -19,11 +19,10 @@
  *
  * Example usage:
  * <code>
- * <?php
  *
  * /**
  *  * Handling user-posted comments
- *  *\/
+ *  {@*}
  *
  * $comment = new Services_Akismet_Comment();
  * $comment->setAuthor('Test Author');
@@ -53,7 +52,7 @@
  *
  * /**
  *  * Submitting a comment as known spam
- *  *\/
+ *  {@*}
  *
  * $comment = new Services_Akismet_Comment();
  * $comment->setAuthor('Test Author');
@@ -77,7 +76,7 @@
  *
  * /**
  *  * Submitting a comment as a false positive
- *  *\/
+ *  {@*}
  *
  * $comment = new Services_Akismet_Comment();
  * $comment->setAuthor('Test Author');
@@ -99,7 +98,6 @@
  *         $comment_exception->getMessage();
  * }
  *
- * ?>
  * </code>
  *
  * PHP version 5
@@ -157,6 +155,89 @@ require_once 'Services/Akismet/InvalidApiKeyException.php';
 
 /**
  * Class to use Akismet API from PHP
+ *
+ * Example usage:
+ * <code>
+ *
+ * /**
+ *  * Handling user-posted comments
+ *  {@*}
+ *
+ * $comment = new Services_Akismet_Comment();
+ * $comment->setAuthor('Test Author');
+ * $comment->setAuthorEmail('test@example.com');
+ * $comment->setAuthorUri('http://example.com/');
+ * $comment->setContent('Hello, World!');
+ *
+ * try {
+ *     $api_key = 'AABBCCDDEEFF';
+ *     $akismet = new Services_Akismet('http://blog.example.com/', $api_key);
+ *     if ($akismet->isSpam($comment)) {
+ *         // rather than simply ignoring the spam comment, it is recommended
+ *         // to save the comment and mark it as spam in case the comment is a
+ *         // false positive.
+ *     } else {
+ *         // save comment as normal comment
+ *     }
+ * } catch (Services_Akismet_InvalidApiKeyException $key_exception) {
+ *     echo 'Invalid API key!';
+ * } catch (Services_Akismet_CommunicationException $comm_exception) {
+ *     echo 'Error communicating with Akismet API server: ' .
+ *         $com_exception->getMessage();
+ * } catch (Services_Akismet_InvalidCommentException $comment_exception) {
+ *     echo 'Specified comment is missing one or more required fields.' .
+ *         $comment_exception->getMessage();
+ * }
+ *
+ * /**
+ *  * Submitting a comment as known spam
+ *  {@*}
+ *
+ * $comment = new Services_Akismet_Comment();
+ * $comment->setAuthor('Test Author');
+ * $comment->setAuthorEmail('test@example.com');
+ * $comment->setAuthorUri('http://example.com/');
+ * $comment->setContent('Hello, World!');
+ *
+ * try {
+ *     $api_key = 'AABBCCDDEEFF';
+ *     $akismet = new Services_Akismet('http://blog.example.com/', $api_key);
+ *     $akismet->submitSpam($comment);
+ * } catch (Services_Akismet_InvalidApiKeyException $key_exception) {
+ *     echo 'Invalid API key!';
+ * } catch (Services_Akismet_CommunicationException $comm_exception) {
+ *     echo 'Error communicating with Akismet API server: ' .
+ *         $com_exception->getMessage();
+ * } catch (Services_Akismet_InvalidCommentException $comment_exception) {
+ *     echo 'Specified comment is missing one or more required fields.' .
+ *         $comment_exception->getMessage();
+ * }
+ *
+ * /**
+ *  * Submitting a comment as a false positive
+ *  {@*}
+ *
+ * $comment = new Services_Akismet_Comment();
+ * $comment->setAuthor('Test Author');
+ * $comment->setAuthorEmail('test@example.com');
+ * $comment->setAuthorUri('http://example.com/');
+ * $comment->setContent('Hello, World!');
+ *
+ * try {
+ *     $api_key = 'AABBCCDDEEFF';
+ *     $akismet = new Services_Akismet('http://blog.example.com/', $api_key);
+ *     $akismet->submitFalsePositive($comment);
+ * } catch (Services_Akismet_InvalidApiKeyException $key_exception) {
+ *     echo 'Invalid API key!';
+ * } catch (Services_Akismet_CommunicationException $comm_exception) {
+ *     echo 'Error communicating with Akismet API server: ' .
+ *         $com_exception->getMessage();
+ * } catch (Services_Akismet_InvalidCommentException $comment_exception) {
+ *     echo 'Specified comment is missing one or more required fields.' .
+ *         $comment_exception->getMessage();
+ * }
+ *
+ * </code>
  *
  * @category  Services
  * @package   Services_Akismet

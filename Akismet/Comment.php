@@ -7,8 +7,6 @@
  *
  * Example Usage:
  * <code>
- * <?php
- *
  * $comment = new Services_Akismet_Comment();
  * $comment->setAuthor('Test Author');
  * $comment->setAuthorEmail('test@example.com');
@@ -16,8 +14,6 @@
  * $comment->setContent('Hello, World!');
  *
  * echo $comment;
- *
- * ?>
  * </code>
  *
  * PHP version 5
@@ -62,6 +58,17 @@ require_once 'Services/Akismet/InvalidCommentException.php';
 
 /**
  * Akismet comment
+ *
+ * Example Usage:
+ * <code>
+ * $comment = new Services_Akismet_Comment();
+ * $comment->setAuthor('Test Author');
+ * $comment->setAuthorEmail('test@example.com');
+ * $comment->setAuthorUri('http://example.com/');
+ * $comment->setContent('Hello, World!');
+ *
+ * echo $comment;
+ * </code>
  *
  * @category  Services
  * @package   Services_Akismet
