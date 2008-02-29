@@ -2,7 +2,7 @@
 
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
-if (!array_key_exists($_SERVER['argv'][1])) {
+if (!array_key_exists(1, $_SERVER['argv'])) {
     echo "specify your Akismet API key as the first argument.\n";
     exit(1);
 }
