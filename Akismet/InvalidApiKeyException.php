@@ -37,6 +37,7 @@
  * @author    Michael Gauthier <mike@silverorange.com>
  * @copyright 2008 silverorange
  * @license   http://www.opensource.org/licenses/mit-license.html MIT License
+ * @version   CVS: $Id$
  * @link      http://pear.php.net/package/Services_Akismet
  */
 
