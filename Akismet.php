@@ -438,6 +438,8 @@ class Services_Akismet
      *                               implementations specified by
      *                               {@link Services_Akismet_HttpClient}.
      *
+     * @return void
+     *
      * @throws PEAR_Exception if the specified HTTP client implementation may
      *         not be used with this PHP installation or if the specified HTTP
      *         client implementation does not exist.
