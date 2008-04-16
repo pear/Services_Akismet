@@ -98,7 +98,7 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
      *
      * @see Services_Akismet_HttpClient_Socket::__construct()
      */
-    private $_user_agent = '';
+    private $_userAgent = '';
 
     /**
      * Number of bytes to read at once from the HTTP server
@@ -107,7 +107,7 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
      *
      * @see Services_Akismet_HttpClient_Socket::post()
      */
-    private $_chunk_size = 4096;
+    private $_chunkSize = 4096;
 
     /**
      * Whether or not this client is connected
@@ -137,7 +137,7 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
      *
      * @param string $path    the resource to post to.
      * @param string $content the data to post.
-     * @param string $api_key optional. The Wordpress API key to use for the
+     * @param string $apiKey  optional. The Wordpress API key to use for the
      *                        request. If not specified, no API key information
      *                        is included in the request. This is used for key
      *                        validation.
@@ -151,12 +151,12 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
      *         is an error reading the response from the Akismet API server or
      *         if the response from the Akismet API server is invalid.
      */
-    public function post($path, $content, $api_key = '')
+    public function post($path, $content, $apiKey = '')
     {
         $this->_connect();
 
-        if (strlen($api_key) > 0) {
-            $host = $api_key . '.' . $this->_host;
+        if (strlen($apiKey) > 0) {
+            $host = $apiKey . '.' . $this->_host;
         } else {
             $host = $this->_host;
         }
@@ -165,9 +165,9 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
             ini_get('mbstring.func_overload') & 2 == 2) {
             // get byte-length of string if mb_string function overloading is
             // enabled for the strlen function group
-            $content_length = mb_strlen($content, '8bit');
+            $contentLength = mb_strlen($content, '8bit');
         } else {
-            $content_length = strlen((binary)$content);
+            $contentLength = strlen((binary)$content);
         }
 
         $request = sprintf("POST %s HTTP/1.1\r\n" .
@@ -181,9 +181,9 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
             "\r\n" .
             "%s",
             $path,
-            $this->_user_agent,
+            $this->_userAgent,
             $host,
-            $content_length,
+            $contentLength,
             $content);
 
         if (fwrite($this->_connection, $request) === false) {
@@ -198,7 +198,7 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
 
         $response = '';
         while (!feof($this->_connection)) {
-            $chunk = fread($this->_connection, $this->_chunk_size);
+            $chunk = fread($this->_connection, $this->_chunkSize);
             if ($chunk === false) {
                 throw new Services_Akismet_CommunicationException('Error ' .
                     'reading response from API server.');
@@ -241,16 +241,16 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
      * Instances of this HTTP client must be instantiated using the
      * {@link Services_Akismet_HttpClient::factory()} method.
      *
-     * @param string  $host       the Akismet API server host name.
-     * @param integer $port       the TCP/IP connection port of this HTTP
-     *                            client.
-     * @param string  $user_agent the HTTP user agent of this HTTP client.
+     * @param string  $host      the Akismet API server host name.
+     * @param integer $port      the TCP/IP connection port of this HTTP
+     *                           client.
+     * @param string  $userAgent the HTTP user agent of this HTTP client.
      */
-    protected function __construct($host, $port, $user_agent)
+    protected function __construct($host, $port, $userAgent)
     {
-        $this->_host       = strval($host);
-        $this->_port       = intval($port);
-        $this->_user_agent = strval($user_agent);
+        $this->_host      = strval($host);
+        $this->_port      = intval($port);
+        $this->_userAgent = strval($userAgent);
     }
 
     // }}}
@@ -272,11 +272,11 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
     {
         if (!$this->_connected) {
             $this->_connection = fsockopen($this->_host, $this->_port,
-                $error_number, $error_text);
+                $errorNumber, $errorText);
 
             if ($this->_connection === false) {
                 throw new Services_Akismet_CommunicationException('Unable to ' .
-                    'connect to API server: ' . $error_text, $error_number);
+                    'connect to API server: ' . $errorText, $errorNumber);
             }
 
             $this->_connected = true;
@@ -300,7 +300,7 @@ class Services_Akismet_HttpClient_Socket extends Services_Akismet_HttpClient
         if ($this->_connected) {
             // read remaining data and junk it
             while (!feof($this->_connection)) {
-                fread($this->_connection, $this->_chunk_size);
+                fread($this->_connection, $this->_chunkSize);
             }
             fclose($this->_connection);
             $this->_connected = false;

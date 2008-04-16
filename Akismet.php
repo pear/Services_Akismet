@@ -31,8 +31,8 @@
  * $comment->setContent('Hello, World!');
  *
  * try {
- *     $api_key = 'AABBCCDDEEFF';
- *     $akismet = new Services_Akismet('http://blog.example.com/', $api_key);
+ *     $apiKey = 'AABBCCDDEEFF';
+ *     $akismet = new Services_Akismet('http://blog.example.com/', $apiKey);
  *     if ($akismet->isSpam($comment)) {
  *         // rather than simply ignoring the spam comment, it is recommended
  *         // to save the comment and mark it as spam in case the comment is a
@@ -40,14 +40,14 @@
  *     } else {
  *         // save comment as normal comment
  *     }
- * } catch (Services_Akismet_InvalidApiKeyException $key_exception) {
+ * } catch (Services_Akismet_InvalidApiKeyException $keyException) {
  *     echo 'Invalid API key!';
- * } catch (Services_Akismet_CommunicationException $comm_exception) {
+ * } catch (Services_Akismet_CommunicationException $comException) {
  *     echo 'Error communicating with Akismet API server: ' .
- *         $com_exception->getMessage();
- * } catch (Services_Akismet_InvalidCommentException $comment_exception) {
+ *         $comException->getMessage();
+ * } catch (Services_Akismet_InvalidCommentException $commentException) {
  *     echo 'Specified comment is missing one or more required fields.' .
- *         $comment_exception->getMessage();
+ *         $commentException->getMessage();
  * }
  *
  * /**
@@ -61,17 +61,17 @@
  * $comment->setContent('Hello, World!');
  *
  * try {
- *     $api_key = 'AABBCCDDEEFF';
- *     $akismet = new Services_Akismet('http://blog.example.com/', $api_key);
+ *     $apiKey = 'AABBCCDDEEFF';
+ *     $akismet = new Services_Akismet('http://blog.example.com/', $apiKey);
  *     $akismet->submitSpam($comment);
- * } catch (Services_Akismet_InvalidApiKeyException $key_exception) {
+ * } catch (Services_Akismet_InvalidApiKeyException $keyException) {
  *     echo 'Invalid API key!';
- * } catch (Services_Akismet_CommunicationException $comm_exception) {
+ * } catch (Services_Akismet_CommunicationException $comException) {
  *     echo 'Error communicating with Akismet API server: ' .
- *         $com_exception->getMessage();
- * } catch (Services_Akismet_InvalidCommentException $comment_exception) {
+ *         $comException->getMessage();
+ * } catch (Services_Akismet_InvalidCommentException $commentException) {
  *     echo 'Specified comment is missing one or more required fields.' .
- *         $comment_exception->getMessage();
+ *         $commentException->getMessage();
  * }
  *
  * /**
@@ -85,17 +85,17 @@
  * $comment->setContent('Hello, World!');
  *
  * try {
- *     $api_key = 'AABBCCDDEEFF';
- *     $akismet = new Services_Akismet('http://blog.example.com/', $api_key);
+ *     $apiKey = 'AABBCCDDEEFF';
+ *     $akismet = new Services_Akismet('http://blog.example.com/', $apiKey);
  *     $akismet->submitFalsePositive($comment);
- * } catch (Services_Akismet_InvalidApiKeyException $key_exception) {
+ * } catch (Services_Akismet_InvalidApiKeyException $keyException) {
  *     echo 'Invalid API key!';
- * } catch (Services_Akismet_CommunicationException $comm_exception) {
+ * } catch (Services_Akismet_CommunicationException $comException) {
  *     echo 'Error communicating with Akismet API server: ' .
- *         $com_exception->getMessage();
- * } catch (Services_Akismet_InvalidCommentException $comment_exception) {
+ *         $comException->getMessage();
+ * } catch (Services_Akismet_InvalidCommentException $commentException) {
  *     echo 'Specified comment is missing one or more required fields.' .
- *         $comment_exception->getMessage();
+ *         $commentException->getMessage();
  * }
  *
  * </code>
@@ -171,8 +171,8 @@ require_once 'Services/Akismet/InvalidApiKeyException.php';
  * $comment->setContent('Hello, World!');
  *
  * try {
- *     $api_key = 'AABBCCDDEEFF';
- *     $akismet = new Services_Akismet('http://blog.example.com/', $api_key);
+ *     $apiKey = 'AABBCCDDEEFF';
+ *     $akismet = new Services_Akismet('http://blog.example.com/', $apiKey);
  *     if ($akismet->isSpam($comment)) {
  *         // rather than simply ignoring the spam comment, it is recommended
  *         // to save the comment and mark it as spam in case the comment is a
@@ -180,14 +180,14 @@ require_once 'Services/Akismet/InvalidApiKeyException.php';
  *     } else {
  *         // save comment as normal comment
  *     }
- * } catch (Services_Akismet_InvalidApiKeyException $key_exception) {
+ * } catch (Services_Akismet_InvalidApiKeyException $keyException) {
  *     echo 'Invalid API key!';
- * } catch (Services_Akismet_CommunicationException $comm_exception) {
+ * } catch (Services_Akismet_CommunicationException $comException) {
  *     echo 'Error communicating with Akismet API server: ' .
- *         $com_exception->getMessage();
- * } catch (Services_Akismet_InvalidCommentException $comment_exception) {
+ *         $comException->getMessage();
+ * } catch (Services_Akismet_InvalidCommentException $commentException) {
  *     echo 'Specified comment is missing one or more required fields.' .
- *         $comment_exception->getMessage();
+ *         $commentException->getMessage();
  * }
  *
  * /**
@@ -201,17 +201,17 @@ require_once 'Services/Akismet/InvalidApiKeyException.php';
  * $comment->setContent('Hello, World!');
  *
  * try {
- *     $api_key = 'AABBCCDDEEFF';
- *     $akismet = new Services_Akismet('http://blog.example.com/', $api_key);
+ *     $apiKey = 'AABBCCDDEEFF';
+ *     $akismet = new Services_Akismet('http://blog.example.com/', $apiKey);
  *     $akismet->submitSpam($comment);
- * } catch (Services_Akismet_InvalidApiKeyException $key_exception) {
+ * } catch (Services_Akismet_InvalidApiKeyException $keyException) {
  *     echo 'Invalid API key!';
- * } catch (Services_Akismet_CommunicationException $comm_exception) {
+ * } catch (Services_Akismet_CommunicationException $comException) {
  *     echo 'Error communicating with Akismet API server: ' .
- *         $com_exception->getMessage();
- * } catch (Services_Akismet_InvalidCommentException $comment_exception) {
+ *         $comException->getMessage();
+ * } catch (Services_Akismet_InvalidCommentException $commentException) {
  *     echo 'Specified comment is missing one or more required fields.' .
- *         $comment_exception->getMessage();
+ *         $commentException->getMessage();
  * }
  *
  * /**
@@ -225,17 +225,17 @@ require_once 'Services/Akismet/InvalidApiKeyException.php';
  * $comment->setContent('Hello, World!');
  *
  * try {
- *     $api_key = 'AABBCCDDEEFF';
- *     $akismet = new Services_Akismet('http://blog.example.com/', $api_key);
+ *     $apiKey = 'AABBCCDDEEFF';
+ *     $akismet = new Services_Akismet('http://blog.example.com/', $apiKey);
  *     $akismet->submitFalsePositive($comment);
- * } catch (Services_Akismet_InvalidApiKeyException $key_exception) {
+ * } catch (Services_Akismet_InvalidApiKeyException $keyException) {
  *     echo 'Invalid API key!';
- * } catch (Services_Akismet_CommunicationException $comm_exception) {
+ * } catch (Services_Akismet_CommunicationException $comException) {
  *     echo 'Error communicating with Akismet API server: ' .
- *         $com_exception->getMessage();
- * } catch (Services_Akismet_InvalidCommentException $comment_exception) {
+ *         $comException->getMessage();
+ * } catch (Services_Akismet_InvalidCommentException $commentException) {
  *     echo 'Specified comment is missing one or more required fields.' .
- *         $comment_exception->getMessage();
+ *         $commentException->getMessage();
  * }
  *
  * </code>
@@ -259,7 +259,7 @@ class Services_Akismet
      *
      * @var integer
      */
-    private $_api_port    = 80;
+    private $_apiPort    = 80;
 
     /**
      * The Akismet API server name
@@ -268,7 +268,7 @@ class Services_Akismet
      *
      * @var string
      */
-    private $_api_server  = 'rest.akismet.com';
+    private $_apiServer  = 'rest.akismet.com';
 
     /**
      * The Akismet API version to use
@@ -277,7 +277,7 @@ class Services_Akismet
      *
      * @var string
      */
-    private $_api_version = '1.1';
+    private $_apiVersion = '1.1';
 
     /**
      * The URI of the webblog for which Akismet services will be used
@@ -286,7 +286,7 @@ class Services_Akismet
      *
      * @see Services_Akismet::__construct()
      */
-    private $_blog_uri = '';
+    private $_blogUri = '';
 
     /**
      * The Wordpress API key to use to access Akismet services
@@ -295,7 +295,7 @@ class Services_Akismet
      *
      * @see Services_Akismet::__construct()
      */
-    private $_api_key  = '';
+    private $_apiKey  = '';
 
 
     /**
@@ -305,7 +305,7 @@ class Services_Akismet
      *
      * @see Services_Akismet::setHttpClientImplementation()
      */
-    private $_http_client = null;
+    private $_httpClient = null;
 
     // }}}
     // {{{ __construct()
@@ -313,17 +313,16 @@ class Services_Akismet
     /**
      * Creates a new Akismet object
      *
-     * @param string $blog_uri                   the URI of the webblog
-     *                                           homepage.
-     * @param string $api_key                    the Wordpress API key to use
-     *                                           for Akismet services.
-     * @param string $http_client_implementation optional. The name of the HTTP
-     *                                           client implementation to use.
-     *                                           This must be one of the
-     *                                           implementations specified by
-     *                                           {@link Services_Akismet_HttpClient}.
-     *                                           If not specified, defaults to
-     *                                           'sockets'.
+     * @param string $blogUri                  the URI of the webblog homepage.
+     * @param string $apiKey                   the Wordpress API key to use for
+     *                                         Akismet services.
+     * @param string $httpClientImplementation optional. The name of the HTTP
+     *                                         client implementation to use.
+     *                                         This must be one of the
+     *                                         implementations specified by
+     *                                         {@link Services_Akismet_HttpClient}.
+     *                                         If not specified, defaults to
+     *                                         'sockets'.
      *
      * @throws Services_Akismet_InvalidApiKeyException if the provided
      *         Wordpress API key is not valid.
@@ -335,20 +334,20 @@ class Services_Akismet
      *         not be used with this PHP installation or if the specified HTTP
      *         client implementation does not exist.
      */
-    public function __construct($blog_uri, $api_key,
-        $http_client_implementation = 'sockets')
+    public function __construct($blogUri, $apiKey,
+        $httpClientImplementation = 'sockets')
     {
-        $this->_blog_uri = $blog_uri;
-        $this->_api_key  = $api_key;
+        $this->_blogUri = $blogUri;
+        $this->_apiKey  = $apiKey;
 
         // build http client
-        $this->setHttpClientImplementation($http_client_implementation);
+        $this->setHttpClientImplementation($httpClientImplementation);
 
         // make sure the API key is valid
-        if (!$this->_isApiKeyValid($this->_api_key)) {
+        if (!$this->_isApiKeyValid($this->_apiKey)) {
             throw new Services_Akismet_InvalidApiKeyException('The specified ' .
                 'Wordpress API key is not valid. Key used was: "' .
-                $this->_api_key . '".', 0, $this->_api_key);
+                $this->_apiKey . '".', 0, $this->_apiKey);
         }
     }
 
@@ -370,9 +369,9 @@ class Services_Akismet
      */
     public function isSpam(Services_Akismet_Comment $comment)
     {
-        $post_data = $comment->getPostData();
-        $post_data = 'blog=' . urlencode($this->_blog_uri) . '&' . $post_data;
-        $response  = $this->_request('comment-check', $post_data);
+        $postData = $comment->getPostData();
+        $postData = 'blog=' . urlencode($this->_blogUri) . '&' . $postData;
+        $response = $this->_request('comment-check', $postData);
         return ($response == 'true');
     }
 
@@ -397,9 +396,9 @@ class Services_Akismet
      */
     public function submitSpam(Services_Akismet_Comment $comment)
     {
-        $post_data = $comment->getPostData();
-        $post_data = 'blog=' . urlencode($this->_blog_uri) . '&' . $post_data;
-        $this->_request('submit-spam', $post_data);
+        $postData = $comment->getPostData();
+        $postData = 'blog=' . urlencode($this->_blogUri) . '&' . $postData;
+        $this->_request('submit-spam', $postData);
     }
 
     // }}}
@@ -424,9 +423,9 @@ class Services_Akismet
      */
     public function submitFalsePositive(Services_Akismet_Comment $comment)
     {
-        $post_data = $comment->getPostData();
-        $post_data = 'blog=' . urlencode($this->_blog_uri) . '&' . $post_data;
-        $this->_request('submit-ham', $post_data);
+        $postData = $comment->getPostData();
+        $postData = 'blog=' . urlencode($this->_blogUri) . '&' . $postData;
+        $this->_request('submit-ham', $postData);
     }
 
     // }}}
@@ -455,17 +454,17 @@ class Services_Akismet
      */
     public function setHttpClientImplementation($implementation)
     {
-        $services_akismet_name    = '@NAME@';
-        $services_akismet_version = '@API-VERSION@';
+        $servicesAkismetName    = '@NAME@';
+        $servicesAkismetVersion = '@API-VERSION@';
 
-        $user_agent = sprintf('%s/%s | Akismet/%s',
-            $services_akismet_name,
-            $services_akismet_version,
-            $this->_api_version);
+        $userAgent = sprintf('%s/%s | Akismet/%s',
+            $servicesAkismetName,
+            $servicesAkismetVersion,
+            $this->_apiVersion);
 
-        $this->_http_client =
-            Services_Akismet_HttpClient::factory($this->_api_server,
-                $this->_api_port, $user_agent, $implementation);
+        $this->_httpClient =
+            Services_Akismet_HttpClient::factory($this->_apiServer,
+                $this->_apiPort, $userAgent, $implementation);
     }
 
     // }}}
@@ -484,11 +483,11 @@ class Services_Akismet
      */
     private function _isApiKeyValid($key)
     {
-        $post_data = sprintf('key=%s&blog=%s',
+        $postData = sprintf('key=%s&blog=%s',
             urlencode($key),
-            urlencode($this->_blog_uri));
+            urlencode($this->_blogUri));
 
-        $response = $this->_request('verify-key', $post_data);
+        $response = $this->_request('verify-key', $postData);
         return ($response == 'valid');
     }
 
@@ -498,19 +497,19 @@ class Services_Akismet
     /**
      * Calls a method on the Akismet API server using a HTTP POST request
      *
-     * @param string $method_name the name of the Akismet method to call.
-     * @param string $content     the post content of the request. This contains
-     *                            Akismet method parameters.
+     * @param string $methodName the name of the Akismet method to call.
+     * @param string $content    the post content of the request. This contains
+     *                           Akismet method parameters.
      *
      * @return string the HTTP response content.
      *
      * @throws Services_Akismet_CommunicationException if there is an error
      *         communicating with the Akismet API server.
      */
-    private function _request($method_name, $content)
+    private function _request($methodName, $content)
     {
-        $path = sprintf('/%s/%s', $this->_api_version, $method_name);
-        $response = $this->_http_client->post($path, $content, $this->_api_key);
+        $path = sprintf('/%s/%s', $this->_apiVersion, $methodName);
+        $response = $this->_httpClient->post($path, $content, $this->_apiKey);
         return $response;
     }
 

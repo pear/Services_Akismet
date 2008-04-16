@@ -97,7 +97,7 @@ class Services_Akismet_Comment
      *
      * @var array
      */
-    private static $_allowed_server_vars = array(
+    private static $_allowedServerVars = array(
         'SCRIPT_URI',
         'HTTP_HOST',
         'HTTP_USER_AGENT',
@@ -131,6 +131,19 @@ class Services_Akismet_Comment
     );
 
     /**
+     * Fields that are required for a comment
+     *
+     * @var array
+     *
+     * @see http://akismet.com/development/api/#comment-check
+     */
+    private static $_requiredFields = array(
+        'user_ip',
+        'user_agent',
+        'referrer'
+    );
+
+    /**
      * Fields of this comment
      *
      * @var array
@@ -138,19 +151,6 @@ class Services_Akismet_Comment
      * @see http://akismet.com/development/api/#comment-check
      */
     private $_fields = array();
-
-    /**
-     * Fields that are required for a comment
-     *
-     * @var array
-     *
-     * @see http://akismet.com/development/api/#comment-check
-     */
-    private $_required_fields = array(
-        'user_ip',
-        'user_agent',
-        'referrer'
-    );
 
     // }}}
     // {{{ __construct()
@@ -222,7 +222,7 @@ class Services_Akismet_Comment
      */
     public function getPostData()
     {
-        foreach ($this->_required_fields as $field) {
+        foreach (self::$_requiredFields as $field) {
             if (!array_key_exists($field, $this->_fields)) {
                 throw new Services_Akismet_InvalidCommentException('Comment ' .
                     'is missing required field: "' . $field . '".');
@@ -235,15 +235,15 @@ class Services_Akismet_Comment
             $values[] = sprintf('%s=%s', $key, urlencode($value));
         }
 
-        foreach (self::$_allowed_server_vars as $key) {
+        foreach (self::$_allowedServerVars as $key) {
             if (array_key_exists($key, $_SERVER)) {
                 $value = $_SERVER[$key];
                 $values[] = sprintf('%s=%s', $key, urlencode($value));
             }
         }
 
-        $post_data = implode('&', $values);
-        return $post_data;
+        $postData = implode('&', $values);
+        return $postData;
     }
 
     // }}}
@@ -377,17 +377,17 @@ class Services_Akismet_Comment
      * IP address to something different or if the current request does not have
      * an IP address set.
      *
-     * @param string $ip_address the IP address of the user posting this
-     *                           comment.
+     * @param string $ipAddress the IP address of the user posting this
+     *                          comment.
      *
      * @return void
      */
-    public function setUserIp($ip_address)
+    public function setUserIp($ipAddress)
     {
-        if ($ip_address === null) {
+        if ($ipAddress === null) {
             unset($this->_fields['user_ip']);
         } else {
-            $this->_fields['user_ip'] = strval($ip_address);
+            $this->_fields['user_ip'] = strval($ipAddress);
         }
     }
 
@@ -402,17 +402,17 @@ class Services_Akismet_Comment
      * user agent to something different or if the current request does not
      * have a user agent set.
      *
-     * @param string $user_agent the user agent of the user posting this
-     *                           comment.
+     * @param string $userAgent the user agent of the user posting this
+     *                          comment.
      *
      * @return void
      */
-    public function setUserAgent($user_agent)
+    public function setUserAgent($userAgent)
     {
-        if ($user_agent === null) {
+        if ($userAgent === null) {
             unset($this->_fields['user_agent']);
         } else {
-            $this->_fields['user_agent'] = strval($user_agent);
+            $this->_fields['user_agent'] = strval($userAgent);
         }
     }
 
@@ -427,17 +427,17 @@ class Services_Akismet_Comment
      * the HTTP referer to something different or if the current request does
      * not have a HTTP referer set.
      *
-     * @param string $http_referer the HTTP referer of the user posting this
-     *                             comment.
+     * @param string $httpReferer the HTTP referer of the user posting this
+     *                            comment.
      *
      * @return void
      */
-    public function setHttpReferer($http_referer)
+    public function setHttpReferer($httpReferer)
     {
-        if ($http_referer === null) {
+        if ($httpReferer === null) {
             unset($this->_fields['referrer']);
         } else {
-            $this->_fields['referrer'] = strval($http_referer);
+            $this->_fields['referrer'] = strval($httpReferer);
         }
     }
 

@@ -102,7 +102,7 @@ class Services_Akismet_HttpClient_Stream extends Services_Akismet_HttpClient
      *
      * @see Services_Akismet_HttpClient_Stream::__construct()
      */
-    private $_user_agent = '';
+    private $_userAgent = '';
 
     /**
      * The stream context used for HTTP connections
@@ -113,7 +113,7 @@ class Services_Akismet_HttpClient_Stream extends Services_Akismet_HttpClient
      * @see Services_Akismet_HttpClient_Stream::__construct()
      * @see Services_Akismet_HttpClient_Stream::post()
      */
-    private $_stream_context = null;
+    private $_streamContext = null;
 
     // }}}
     // {{{ post()
@@ -123,7 +123,7 @@ class Services_Akismet_HttpClient_Stream extends Services_Akismet_HttpClient
      *
      * @param string $path    the resource to post to.
      * @param string $content the data to post.
-     * @param string $api_key optional. The Wordpress API key to use for the
+     * @param string $apiKey  optional. The Wordpress API key to use for the
      *                        request. If not specified, no API key information
      *                        is included in the request. This is used for key
      *                        validation.
@@ -134,7 +134,7 @@ class Services_Akismet_HttpClient_Stream extends Services_Akismet_HttpClient
      * @throws Services_Akismet_CommunicationException if there is an error
      *         reading from the HTTP stream.
      */
-    public function post($path, $content, $api_key = '')
+    public function post($path, $content, $apiKey = '')
     {
         if (strlen($this->_port) == 0) {
             $url = sprintf('http://%s%s', $this->_host, $path);
@@ -142,14 +142,14 @@ class Services_Akismet_HttpClient_Stream extends Services_Akismet_HttpClient
             $url = sprintf('http://%s:%s%s', $this->_host, $this->_port, $path);
         }
 
-        if (strlen($api_key) > 0) {
-            $host_header = $api_key . '.' . $this->_host;
+        if (strlen($apiKey) > 0) {
+            $hostHeader = $apiKey . '.' . $this->_host;
         } else {
-            $host_header = $this->_host;
+            $hostHeader = $this->_host;
         }
 
         $headers = array(
-            'Host'         => $host_header,
+            'Host'         => $hostHeader,
             'Content-type' => 'application/x-www-form-urlencoded; charset=utf-8',
         );
 
@@ -158,7 +158,7 @@ class Services_Akismet_HttpClient_Stream extends Services_Akismet_HttpClient
             $header .= $key . ': ' . $value . "\r\n";
         }
 
-        $stream_options = array(
+        $streamOptions = array(
             'http' => array(
                 'header'  => $header,
                 'content' => $content
@@ -166,11 +166,11 @@ class Services_Akismet_HttpClient_Stream extends Services_Akismet_HttpClient
         );
 
         // set header and post data content on stream context
-        $result = stream_context_set_option($this->_stream_context,
-            $stream_options);
+        $result = stream_context_set_option($this->_streamContext,
+            $streamOptions);
 
         // read response
-        $response = @file_get_contents($url, false, $this->_stream_context);
+        $response = @file_get_contents($url, false, $this->_streamContext);
 
         if ($response === false) {
             throw new Services_Akismet_CommunicationException('Error reading ' .
@@ -190,31 +190,31 @@ class Services_Akismet_HttpClient_Stream extends Services_Akismet_HttpClient
      * Instances of this HTTP client must be instantiated using the
      * {@link Services_Akismet_HttpClient::factory()} method.
      *
-     * @param string  $host       the Akismet API server host name.
-     * @param integer $port       the TCP/IP connection port of this HTTP
-     *                            client.
-     * @param string  $user_agent the HTTP user agent of this HTTP client.
+     * @param string  $host      the Akismet API server host name.
+     * @param integer $port      the TCP/IP connection port of this HTTP
+     *                           client.
+     * @param string  $userAgent the HTTP user agent of this HTTP client.
      *
      * @throws PEAR_Exception if the HTTP streams wrapper is not enabled for
      *         this PHP installation.
      */
-    protected function __construct($host, $port, $user_agent)
+    protected function __construct($host, $port, $userAgent)
     {
-        $this->_host       = strval($host);
-        $this->_port       = intval($port);
-        $this->_user_agent = strval($user_agent);
+        $this->_host      = strval($host);
+        $this->_port      = intval($port);
+        $this->_userAgent = strval($userAgent);
 
         // make sure we have the HTTP wrapper enabled
-        $stream_wrappers = stream_get_wrappers();
-        if (!in_array('http', $stream_wrappers)) {
+        $streamWrappers = stream_get_wrappers();
+        if (!in_array('http', $streamWrappers)) {
             throw new PEAR_Exception('HTTP streams wrapper is not enabled ' .
                 'for this PHP installation. The streams-based HTTP client ' .
                 'may not be used.');
         }
 
         // create stream context
-        $stream_options        = array('http' => array('method' => 'POST'));
-        $this->_stream_context = stream_context_create($stream_options);
+        $streamOptions        = array('http' => array('method' => 'POST'));
+        $this->_streamContext = stream_context_create($streamOptions);
     }
 
     // }}}

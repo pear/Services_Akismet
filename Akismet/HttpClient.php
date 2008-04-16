@@ -112,7 +112,7 @@ abstract class Services_Akismet_HttpClient
      * @param string  $host           the Akismet API server host name.
      * @param integer $port           the TCP/IP connection port of the HTTP
      *                                client.
-     * @param string  $user_agent     the HTTP user agent of the HTTP client.
+     * @param string  $userAgent      the HTTP user agent of the HTTP client.
      * @param string  $implementation optional. The name of the implementation
      *                                to instantiate. Must be one of 'sockets',
      *                                'streams' or 'curl'. If not specified,
@@ -125,7 +125,7 @@ abstract class Services_Akismet_HttpClient
      *         current PHP installation or if the provided implementation does
      *         not exist.
      */
-    public static function factory($host, $port, $user_agent,
+    public static function factory($host, $port, $userAgent,
         $implementation = 'sockets')
     {
         $drivers = array(
@@ -144,10 +144,10 @@ abstract class Services_Akismet_HttpClient
 
         include_once $filename;
 
-        $class_name = 'Services_Akismet_HttpClient_' .
+        $className = 'Services_Akismet_HttpClient_' .
             $drivers[$implementation];
 
-        $object = new $class_name($host, $port, $user_agent);
+        $object = new $className($host, $port, $userAgent);
 
         return $object;
     }
@@ -160,7 +160,7 @@ abstract class Services_Akismet_HttpClient
      *
      * @param string $path    the resource to post to.
      * @param string $content the data to post.
-     * @param string $api_key optional. The Wordpress API key to use for the
+     * @param string $apiKey  optional. The Wordpress API key to use for the
      *                        request. If not specified, no API key information
      *                        is included in the request. This is used for key
      *                        validation.
@@ -171,7 +171,7 @@ abstract class Services_Akismet_HttpClient
      * @throws Services_Akismet_CommunicationException if there is an error
      *         communicating with the Akismet API server.
      */
-    abstract public function post($path, $content, $api_key = '');
+    abstract public function post($path, $content, $apiKey = '');
 
     // }}}
     // {{{ __construct()
@@ -182,15 +182,15 @@ abstract class Services_Akismet_HttpClient
      * Instances of this HTTP client must be instantiated using the
      * {@link Services_Akismet_HttpClient::factory()} method.
      *
-     * @param string  $host       the Akismet API server host name.
-     * @param integer $port       the TCP/IP connection port of this HTTP
-     *                            client.
-     * @param string  $user_agent the HTTP user agent of this HTTP client.
+     * @param string  $host      the Akismet API server host name.
+     * @param integer $port      the TCP/IP connection port of this HTTP
+     *                           client.
+     * @param string  $userAgent the HTTP user agent of this HTTP client.
      *
      * @throws PEAR_Exception if the implementation is not supported by the
      *         current PHP installation.
      */
-    abstract protected function __construct($host, $port, $user_agent);
+    abstract protected function __construct($host, $port, $userAgent);
 
     // }}}
 }

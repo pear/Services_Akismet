@@ -100,7 +100,7 @@ class Services_Akismet_HttpClient_Curl extends Services_Akismet_HttpClient
      *
      * @see Services_Akismet_HttpClient_Curl::__construct()
      */
-    private $_user_agent = '';
+    private $_userAgent = '';
 
     /**
      * Whether or not this client is connected
@@ -117,7 +117,7 @@ class Services_Akismet_HttpClient_Curl extends Services_Akismet_HttpClient
      *
      * @var resource
      */
-    private $_curl_handle = null;
+    private $_curlHandle = null;
 
     // }}}
     // {{{ post()
@@ -127,7 +127,7 @@ class Services_Akismet_HttpClient_Curl extends Services_Akismet_HttpClient
      *
      * @param string $path    the resource to post to.
      * @param string $content the data to post.
-     * @param string $api_key optional. The Wordpress API key to use for the
+     * @param string $apiKey  optional. The Wordpress API key to use for the
      *                        request. If not specified, no API key information
      *                        is included in the request. This is used for key
      *                        validation.
@@ -138,29 +138,29 @@ class Services_Akismet_HttpClient_Curl extends Services_Akismet_HttpClient
      * @throws Services_Akismet_CommunicationException if there is an error
      *         getting the cURL response from Akismet API server.
      */
-    public function post($path, $content, $api_key = '')
+    public function post($path, $content, $apiKey = '')
     {
         $this->_connect();
 
-        if (strlen($api_key) > 0) {
-            $host = $api_key . '.' . $this->_host;
+        if (strlen($apiKey) > 0) {
+            $host = $apiKey . '.' . $this->_host;
         } else {
             $host = $this->_host;
         }
 
         $url = sprintf('http://%s%s', $host, $path);
 
-        curl_setopt_array($this->_curl_handle, array(
+        curl_setopt_array($this->_curlHandle, array(
             CURLOPT_URL        => $url,
             CURLOPT_POSTFIELDS => $content
         ));
 
-        $response = curl_exec($this->_curl_handle);
+        $response = curl_exec($this->_curlHandle);
         if ($response === false) {
-            $error      = curl_error($this->_curl_handle);
-            $error_code = curl_errno($this->_curl_handle);
+            $error     = curl_error($this->_curlHandle);
+            $errorCode = curl_errno($this->_curlHandle);
             throw new Services_Akismet_CommunicationException('Error getting ' .
-                'response from API server: ' . $error, $error_code);
+                'response from API server: ' . $error, $errorCode);
         }
 
         $this->_disconnect();
@@ -190,19 +190,19 @@ class Services_Akismet_HttpClient_Curl extends Services_Akismet_HttpClient
      * Instances of this HTTP client must be instantiated using the
      * {@link Services_Akismet_HttpClient::factory()} method.
      *
-     * @param string  $host       the Akismet API server host name.
-     * @param integer $port       the TCP/IP connection port of this HTTP
-     *                            client.
-     * @param string  $user_agent the HTTP user agent of this HTTP client.
+     * @param string  $host      the Akismet API server host name.
+     * @param integer $port      the TCP/IP connection port of this HTTP
+     *                           client.
+     * @param string  $userAgent the HTTP user agent of this HTTP client.
      *
      * @throws PEAR_Exception if the cURL extension is not loaded for this PHP
      *         installation.
      */
-    protected function __construct($host, $port, $user_agent)
+    protected function __construct($host, $port, $userAgent)
     {
-        $this->_host       = strval($host);
-        $this->_port       = intval($port);
-        $this->_user_agent = strval($user_agent);
+        $this->_host      = strval($host);
+        $this->_port      = intval($port);
+        $this->_userAgent = strval($userAgent);
 
         if (!extension_loaded('curl')) {
             throw new PEAR_Exception('The cURL library is not enabled for ' .
@@ -224,11 +224,11 @@ class Services_Akismet_HttpClient_Curl extends Services_Akismet_HttpClient
     private function _connect()
     {
         if (!$this->_connected) {
-            $this->_curl_handle = curl_init();
-            curl_setopt_array($this->_curl_handle, array(
+            $this->_curlHandle = curl_init();
+            curl_setopt_array($this->_curlHandle, array(
                 CURLOPT_POST           => true,
                 CURLOPT_PORT           => $this->_port,
-                CURLOPT_USERAGENT      => $this->_user_agent,
+                CURLOPT_USERAGENT      => $this->_userAgent,
                 CURLOPT_RETURNTRANSFER => true
             ));
 
@@ -251,9 +251,9 @@ class Services_Akismet_HttpClient_Curl extends Services_Akismet_HttpClient
     private function _disconnect()
     {
         if ($this->_connected) {
-            curl_close($this->_curl_handle);
-            $this->_curl_handle = null;
-            $this->_connected   = false;
+            curl_close($this->_curlHandle);
+            $this->_curlHandle = null;
+            $this->_connected  = false;
         }
     }
 

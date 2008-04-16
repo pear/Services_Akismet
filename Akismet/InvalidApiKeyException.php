@@ -67,7 +67,7 @@ class Services_Akismet_InvalidApiKeyException extends PEAR_Exception
      *
      * @var string
      */
-    private $_api_key = '';
+    private $_apiKey = '';
 
     // }}}
     // {{{ __construct()
@@ -77,11 +77,11 @@ class Services_Akismet_InvalidApiKeyException extends PEAR_Exception
      *
      * @param string $message an error message.
      * @param int    $code    a user defined error code.
-     * @param string $api_key the invalid Wordpress API key.
+     * @param string $apiKey  the invalid Wordpress API key.
      */
-    public function __construct($message, $code = 0, $api_key = '')
+    public function __construct($message, $code = 0, $apiKey = '')
     {
-        $this->_api_key = $api_key;
+        $this->_apiKey = $apiKey;
         parent::__construct($message, $code);
     }
 
@@ -95,7 +95,7 @@ class Services_Akismet_InvalidApiKeyException extends PEAR_Exception
      */
     public function getApiKey()
     {
-        return $this->_api_key;
+        return $this->_apiKey;
     }
 
     // }}}
