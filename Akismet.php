@@ -298,6 +298,13 @@ class Services_Akismet
     private $_api_key  = '';
 
 
+    /**
+     * The HTTP client used to communicate with the Akismet REST API server
+     *
+     * @var Services_Akismet_HttpClient
+     *
+     * @see Services_Akismet::setHttpClientImplementation()
+     */
     private $_http_client = null;
 
     // }}}
