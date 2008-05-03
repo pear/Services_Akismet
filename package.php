@@ -40,13 +40,10 @@
 require_once 'PEAR/PackageFileManager2.php';
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$release_version = '1.0.0';
+$release_version = '1.0.1';
 $release_state   = 'stable';
 $release_notes   =
-    "First stable release.\n\nCoding standards fixes. Made the " .
-    "_requiredFields private member variable static in " .
-    "Services_Akismet_Comment. No functional changes since RC1. Marked " .
-    "package as stable.";
+    "Added unit tests. No functional changes singe 1.0.0.";
 
 $description =
     "This package provides an object-oriented interface to the Akismet REST " .
@@ -87,7 +84,7 @@ $package->setLicense('MIT',
 $package->setNotes($release_notes);
 $package->setReleaseVersion($release_version);
 $package->setReleaseStability($release_state);
-$package->setAPIVersion('1.0.0');
+$package->setAPIVersion('1.0.1');
 $package->setAPIStability('stable');
 
 $package->addIgnore('package.php');
