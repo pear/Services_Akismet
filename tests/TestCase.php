@@ -74,7 +74,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
     /**
      * @var integer
      */
-    private $_old_error_level;
+    private $_oldErrorLevel;
 
     // }}}
     // {{{ protected properties
@@ -113,7 +113,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->_old_error_level = error_reporting(E_ALL | E_STRICT);
+        $this->_oldErrorLevel = error_reporting(E_ALL | E_STRICT);
         $this->akismet = new Services_Akismet(
             $this->config['blogUri'], $this->config['apiKey'],
             $this->getHttpClientImplementation());
@@ -125,7 +125,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
     public function tearDown()
     {
         unset($this->akismet);
-        error_reporting($this->_old_error_level);
+        error_reporting($this->_oldErrorLevel);
     }
 
     // }}}
