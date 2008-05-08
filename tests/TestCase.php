@@ -84,28 +84,13 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
      */
     protected $akismet = null;
 
-    /**
-     * @var array
-     */
-    protected $config = array();
-
     // }}}
     // {{{ __construct()
 
     public function __construct($name = null)
     {
         parent::__construct($name);
-
-        if (!file_exists(dirname(__FILE__).'/config.php')) {
-            throw new Exception('Unit test configuration file is missing. ' .
-                'Please read the documentation in TestCase.php and create ' .
-                'a configuration file. See the example configuration provided '.
-                'in config.php.dist for an example.');
-        }
-
-        include_once dirname(__FILE__).'/config.php';
-
-        $this->config = $GLOBALS['Services_Akismet_Unittest_Config'];
+        @include_once dirname(__FILE__).'/config.php';
     }
 
     // }}}
@@ -113,9 +98,22 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        if (!is_array($GLOBALS['Services_Akismet_Unittest_Config'])) {
+            $this->markTestSkipped('Unit test configuration is missing.');
+        }
+
+        if (   !isset($GLOBALS['Services_Akismet_Unittest_Config']['blogUri'])
+            || !isset($GLOBALS['Services_Akismet_Unittest_Config']['apiKey'])
+        ) {
+            $this->markTestSkipped('Unit test configuration is missing or.' .
+                'incorrect.');
+        }
+
         $this->_oldErrorLevel = error_reporting(E_ALL | E_STRICT);
+
         $this->akismet = new Services_Akismet(
-            $this->config['blogUri'], $this->config['apiKey'],
+            $GLOBALS['Services_Akismet_Unittest_Config']['blogUri'],
+            $GLOBALS['Services_Akismet_Unittest_Config']['apiKey'],
             $this->getHttpClientImplementation());
     }
 
@@ -208,7 +206,8 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
     public function testInvalidApiKeyException()
     {
         $badApiKey = 'asdf';
-        $akismet = new Services_Akismet($this->config['blogUri'],
+        $akismet = new Services_Akismet(
+            $GLOBALS['Services_Akismet_Unittest_Config']['blogUri'],
             $badApiKey, $this->getHttpClientImplementation());
     }
 
