@@ -67,7 +67,7 @@ require_once 'Services/Akismet/Comment.php';
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @link      http://pear.php.net/package/Services_Akismet
  */
-abstract class TestCase extends PHPUnit_Framework_TestCase
+abstract class Services_Akismet_TestCase extends PHPUnit_Framework_TestCase
 {
     // {{{ private properties
 

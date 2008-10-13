@@ -15,7 +15,7 @@ require_once 'TestCase.php';
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @link      http://pear.php.net/package/Services_Akismet
  */
-class CurlTest extends TestCase
+class CurlTest extends Services_Akismet_TestCase
 {
 	// {{{ getHttpClientImplementation()
 
