@@ -85,28 +85,29 @@ abstract class Services_Akismet_TestCase extends PHPUnit_Framework_TestCase
     protected $akismet = null;
 
     // }}}
-    // {{{ __construct()
-
-    public function __construct($name = null)
-    {
-        parent::__construct($name);
-        @include_once dirname(__FILE__).'/config.php';
-    }
-
-    // }}}
     // {{{ setUp()
 
     public function setUp()
     {
-        if (!is_array($GLOBALS['Services_Akismet_Unittest_Config'])) {
-            $this->markTestSkipped('Unit test configuration is missing.');
+        $configFilename = dirname(__FILE__).'/config.php';
+
+        if (!file_exists($configFilename)) {
+            $this->markTestSkipped('Unit test configuration is missing. ' .
+                'Please read the documentation in TestCase.php and create a ' .
+                'configuration file. See the configuration in ' .
+                '\'config.php.dist\' for an example.');
         }
 
-        if (   !isset($GLOBALS['Services_Akismet_Unittest_Config']['blogUri'])
+        include $configFilename;
+
+        if (   !is_array($GLOBALS['Services_Akismet_Unittest_Config'])
+            || !isset($GLOBALS['Services_Akismet_Unittest_Config']['blogUri'])
             || !isset($GLOBALS['Services_Akismet_Unittest_Config']['apiKey'])
         ) {
-            $this->markTestSkipped('Unit test configuration is missing or.' .
-                'incorrect.');
+            $this->markTestSkipped('Unit test configuration is incorrect. ' .
+                'Please read the documentation in TestCase.php and fix the ' .
+                'configuration file. See the configuration in ' .
+                '\'config.php.dist\' for an example.');
         }
 
         $this->_oldErrorLevel = error_reporting(E_ALL | E_STRICT);
