@@ -100,7 +100,8 @@ abstract class Services_Akismet_TestCase extends PHPUnit_Framework_TestCase
 
         include $configFilename;
 
-        if (   !is_array($GLOBALS['Services_Akismet_Unittest_Config'])
+        if (   !isset($GLOBALS['Services_Akismet_Unittest_Config'])
+            || !is_array($GLOBALS['Services_Akismet_Unittest_Config'])
             || !isset($GLOBALS['Services_Akismet_Unittest_Config']['blogUri'])
             || !isset($GLOBALS['Services_Akismet_Unittest_Config']['apiKey'])
         ) {
