@@ -60,13 +60,15 @@ require_once 'Services/Akismet/InvalidCommentException.php';
 /**
  * Akismet comment
  *
- * Example Usage:
+ * Example usage using initial array of values:
+ *
  * <code>
- * $comment = new Services_Akismet_Comment();
- * $comment->setAuthor('Test Author');
- * $comment->setAuthorEmail('test@example.com');
- * $comment->setAuthorUri('http://example.com/');
- * $comment->setContent('Hello, World!');
+ * $comment = new Services_Akismet_Comment(array(
+ *     'author'      => 'Test Author',
+ *     'authorEmail' => 'test@example.com',
+ *     'authorUri'   => 'http://example.com/',
+ *     'content'     => 'Hello, World!'
+ * ));
  *
  * echo $comment;
  * </code>
@@ -158,12 +160,36 @@ class Services_Akismet_Comment
     /**
      * Creates a new comment
      *
-     * The 'user_ip', 'user_agent' and 'referrer' fields are defaulted to
-     * the current request values if possible. They may be changed by calling
-     * the appropriate setter method.
+     * Comments can be initialized from an array of named values. Available
+     * names are:
+     *
+     * - <kbd>string author</kbd>      - the name of the author.
+     * - <kbd>string authorEmail</kbd> - the email addedd of the author.
+     * - <kbd>string authorUri</kbd>   - a link provided by the comment
+     *                                   author.
+     * - <kbd>string content</kbd>     - the content of the comment.
+     * - <kbd>string permalink</kbd>   - permalink of the comment.
+     * - <kbd>string referrer</kbd>    - HTTP referrer. If not specified, the
+     *                                   HTTP referrer of the current request
+     *                                   is used.
+     * - <kbd>string type</kbd>        - the comment type.
+     * - <kbd>string userIp</kbd>      - IP address from which the comment was
+     *                                   submitted. If not specified the remote
+     *                                   IP address of the current request is
+     *                                   used.
+     * - <kbd>string userAgent</kbd>   - the HTTP user agent used to post the
+     *                                   comment. If not specified, the user
+     *                                   agent of the current request is used.
+     *
+     * If not specified, the 'userIp', 'userAgent' and 'referrer' fields are
+     * defaulted to the current request values if possible. They may be changed
+     * by calling the appropriate setter method.
+     *
+     * @param array $fields optional. An array of initial values.
      */
-    public function __construct()
+    public function __construct(array $fields = array())
     {
+        // set default values from request
         if (array_key_exists('REMOTE_ADDR', $_SERVER)) {
             $this->_fields['user_ip'] = $_SERVER['REMOTE_ADDR'];
         }
@@ -174,6 +200,43 @@ class Services_Akismet_Comment
 
         if (array_key_exists('HTTP_REFERER', $_SERVER)) {
             $this->_fields['referrer'] = $_SERVER['HTTP_REFERER'];
+        }
+
+        // set from fields
+        if (array_key_exists('author', $fields)) {
+            $this->setAuthor($fields['author']);
+        }
+
+        if (array_key_exists('authorEmail', $fields)) {
+            $this->setAuthorEmail($fields['authorEmail']);
+        }
+
+        if (array_key_exists('authorUri', $fields)) {
+            $this->setAuthorUri($fields['authorUri']);
+        }
+
+        if (array_key_exists('content', $fields)) {
+            $this->setContent($fields['content']);
+        }
+
+        if (array_key_exists('permalink', $fields)) {
+            $this->setPermalink($fields['permalink']);
+        }
+
+        if (array_key_exists('referrer', $fields)) {
+            $this->setReferrer($fields['referrer']);
+        }
+
+        if (array_key_exists('type', $fields)) {
+            $this->setType($fields['type']);
+        }
+
+        if (array_key_exists('userAgent', $fields)) {
+            $this->setUserAgent($fields['userAgent']);
+        }
+
+        if (array_key_exists('userIp', $fields)) {
+            $this->setUserIp($fields['userIp']);
         }
     }
 
