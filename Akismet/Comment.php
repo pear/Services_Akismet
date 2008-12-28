@@ -7,11 +7,12 @@
  *
  * Example Usage:
  * <code>
- * $comment = new Services_Akismet_Comment();
- * $comment->setAuthor('Test Author');
- * $comment->setAuthorEmail('test@example.com');
- * $comment->setAuthorUri('http://example.com/');
- * $comment->setContent('Hello, World!');
+ * $comment = new Services_Akismet_Comment(array(
+ *     'author'      => 'Test Author',
+ *     'authorEmail' => 'test@example.com',
+ *     'authorUri'   => 'http://example.com/',
+ *     'content'     => 'Hello, World!'
+ * ));
  *
  * echo $comment;
  * </code>
@@ -168,7 +169,8 @@ class Services_Akismet_Comment
      * - <kbd>string authorUri</kbd>   - a link provided by the comment
      *                                   author.
      * - <kbd>string content</kbd>     - the content of the comment.
-     * - <kbd>string permalink</kbd>   - permalink of the comment.
+     * - <kbd>string permalink</kbd>   - permalink of the post to which the
+     *                                   comment is being added.
      * - <kbd>string referrer</kbd>    - HTTP referrer. If not specified, the
      *                                   HTTP referrer of the current request
      *                                   is used.
@@ -220,7 +222,7 @@ class Services_Akismet_Comment
         }
 
         if (array_key_exists('permalink', $fields)) {
-            $this->setPermalink($fields['permalink']);
+            $this->setPostPermalink($fields['permalink']);
         }
 
         if (array_key_exists('referrer', $fields)) {
