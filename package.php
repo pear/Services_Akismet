@@ -59,17 +59,17 @@ $description =
 $package = new PEAR_PackageFileManager2();
 
 $package->setOptions(array(
-    'filelistgenerator'      => 'cvs',
+    'filelistgenerator'      => 'svn',
     'simpleoutput'           => true,
-    'baseinstalldir'         => '/Services',
+    'baseinstalldir'         => '/',
     'packagedirectory'       => './',
     'dir_roles'              => array(
-        'Akismet'            => 'php',
-        'Akismet/HttpClient' => 'php',
+        'Services/Akismet'            => 'php',
+        'Services/Akismet/HttpClient' => 'php',
         'tests'              => 'test'
     ),
     'exceptions'             => array(
-        'Akismet.php'        => 'php'
+        'Services/Akismet.php'        => 'php'
     ),
 ));
 

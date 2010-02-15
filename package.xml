@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.6.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.0RC1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -17,8 +17,8 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
   <email>mike@silverorange.com</email>
   <active>yes</active>
  </lead>
- <date>2008-05-03</date>
- <time>17:58:24</time>
+ <date>2010-02-15</date>
+ <time>23:28:47</time>
  <version>
   <release>1.0.1</release>
   <api>1.0.1</api>
@@ -28,21 +28,26 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
   <api>stable</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/mit-license.html">MIT</license>
- <notes>Added unit tests. No functional changes singe 1.0.0.</notes>
+ <notes>
+Added unit tests. No functional changes singe 1.0.0.
+ </notes>
  <contents>
-  <dir baseinstalldir="/Services" name="/">
-   <dir name="Akismet">
-    <dir name="HttpClient">
-     <file name="Curl.php" role="php" />
-     <file name="Socket.php" role="php" />
-     <file name="Stream.php" role="php" />
-    </dir> <!-- /Akismet/HttpClient -->
-    <file name="Comment.php" role="php" />
-    <file name="CommunicationException.php" role="php" />
-    <file name="HttpClient.php" role="php" />
-    <file name="InvalidApiKeyException.php" role="php" />
-    <file name="InvalidCommentException.php" role="php" />
-   </dir> <!-- /Akismet -->
+  <dir baseinstalldir="/" name="/">
+   <dir name="Services">
+    <dir name="Akismet">
+     <dir name="HttpClient">
+      <file name="Curl.php" role="php" />
+      <file name="Socket.php" role="php" />
+      <file name="Stream.php" role="php" />
+     </dir> <!-- /Services/Akismet/HttpClient -->
+     <file name="Comment.php" role="php" />
+     <file name="CommunicationException.php" role="php" />
+     <file name="HttpClient.php" role="php" />
+     <file name="InvalidApiKeyException.php" role="php" />
+     <file name="InvalidCommentException.php" role="php" />
+    </dir> <!-- /Services/Akismet -->
+    <file name="Akismet.php" role="php" />
+   </dir> <!-- /Services -->
    <dir name="tests">
     <file name="AllTests.php" role="test" />
     <file name="config.php.dist" role="test" />
@@ -51,10 +56,6 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
     <file name="StreamsTest.php" role="test" />
     <file name="TestCase.php" role="test" />
    </dir> <!-- /tests -->
-   <file name="Akismet.php" role="php">
-    <tasks:replace from="@API-VERSION@" to="api-version" type="package-info" />
-    <tasks:replace from="@NAME@" to="name" type="package-info" />
-   </file>
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -83,9 +84,11 @@ This package is derived from the miPHP Akismet class written by Bret Kuhns for u
     <release>stable</release>
     <api>stable</api>
    </stability>
-   <date>2008-05-03</date>
+   <date>2010-02-15</date>
    <license uri="http://www.opensource.org/licenses/mit-license.html">MIT</license>
-   <notes>Added unit tests. No functional changes singe 1.0.0.</notes>
+   <notes>
+Added unit tests. No functional changes singe 1.0.0.
+   </notes>
   </release>
  </changelog>
 </package>
