@@ -69,14 +69,6 @@ require_once 'Services/Akismet/Comment.php';
  */
 abstract class Services_Akismet_TestCase extends PHPUnit_Framework_TestCase
 {
-    // {{{ private properties
-
-    /**
-     * @var integer
-     */
-    private $_oldErrorLevel;
-
-    // }}}
     // {{{ protected properties
 
     /**
@@ -111,8 +103,6 @@ abstract class Services_Akismet_TestCase extends PHPUnit_Framework_TestCase
                 '\'config.php.dist\' for an example.');
         }
 
-        $this->_oldErrorLevel = error_reporting(E_ALL | E_STRICT);
-
         $this->akismet = new Services_Akismet(
             $GLOBALS['Services_Akismet_Unittest_Config']['blogUri'],
             $GLOBALS['Services_Akismet_Unittest_Config']['apiKey'],
@@ -125,7 +115,6 @@ abstract class Services_Akismet_TestCase extends PHPUnit_Framework_TestCase
     public function tearDown()
     {
         unset($this->akismet);
-        error_reporting($this->_oldErrorLevel);
     }
 
     // }}}
