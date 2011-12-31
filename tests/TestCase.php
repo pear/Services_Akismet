@@ -36,16 +36,11 @@
  * @category  Services
  * @package   Services_Akismet
  * @author    Michael Gauthier <mike@silverorange.com>
- * @copyright 2008 silverorange
+ * @copyright 2008-2011 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @version   CVS: $Id$
  * @link      http://pear.php.net/package/Services_Akismet
  */
-
-/**
- * PHPUnit3 framework
- */
-require_once 'PHPUnit/Framework.php';
 
 /**
  * Akismet class to test
@@ -63,7 +58,7 @@ require_once 'Services/Akismet/Comment.php';
  * @category  Services
  * @package   Services_Akismet
  * @author    Michael Gauthier <mike@silverorange.com>
- * @copyright 2008 silverorange
+ * @copyright 2008-2011 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @link      http://pear.php.net/package/Services_Akismet
  */

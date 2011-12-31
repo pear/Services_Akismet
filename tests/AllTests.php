@@ -3,11 +3,11 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * PHPUnit 3.2 AllTests suite for the Services_Akismet package.
+ * PHPUnit AllTests suite for the Services_Akismet package.
  *
- * These tests require the PHPUnit 3.2 package to be installed. PHPUnit is
- * installable using PEAR. See the
- * {@link http://www.phpunit.de/pocket_guide/3.2/en/installation.html manual}
+ * These tests require the PHPUnit 3.6 or greater package to be installed.
+ * PHPUnit is installable using PEAR. See the
+ * {@link http://www.phpunit.de/manual/3.6/en/installation.html manual}
  * for detailed installation instructions.
  *
  * This test suite follows the PEAR AllTests conventions as documented at
@@ -39,7 +39,7 @@
  * @category  Services
  * @package   Services_Akismet
  * @author    Michael Gauthier <mike@silverorange.com>
- * @copyright 2008 silverorange
+ * @copyright 2008-2011 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @version   CVS: $Id$
  * @link      http://pear.php.net/package/Services_Akismet
@@ -49,7 +49,7 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
     define('PHPUnit_MAIN_METHOD', 'Services_Akismet_AllTests::main');
 }
 
-require_once 'PHPUnit/TextUI/TestRunner.php';
+require_once 'PHPUnit/Autoload.php';
 
 require_once 'SocketsTest.php';
 require_once 'StreamsTest.php';
@@ -62,7 +62,7 @@ require_once 'CurlTest.php';
  * @category  Services
  * @package   Services_Akismet
  * @author    Michael Gauthier <mike@silverorange.com>
- * @copyright 2008 silverorange
+ * @copyright 2008-2011 silverorange
  * @license   http://www.gnu.org/copyleft/lesser.html LGPL License 2.1
  * @link      http://pear.php.net/package/Services_Akismet
  */
